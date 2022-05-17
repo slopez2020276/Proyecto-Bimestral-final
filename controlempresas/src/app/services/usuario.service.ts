@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import {environment} from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,14 +13,18 @@ export class UsuarioService {
   public token;
   public identidad;
 
-  constructor(public shttp: HttpClient) { }
+  constructor(public _http: HttpClient) { }
 
   login(usuario, obtenerToken = null): Observable<any> {
     if(obtenerToken != null){
       usuario.obtenerToken = obtenerToken;
     }
     let params = JSON.stringify(usuario);
-    return this.shttp.post(this.url + '/login', params, {headers: this.headersVariable});
+    return this._http.post(this.url + '/login', params, {headers: this.headersVariable});
+  }
+
+  register(params){
+    return this._http.post(this.url + '/registrar', params, {headers: this.headersVariable});
   }
 
   getToken(){
