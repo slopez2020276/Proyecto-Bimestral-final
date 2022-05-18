@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Sucursales } from '../models/sucursales.models';
 import {Observable} from 'rxjs';
 import { Productos } from '../models/productos.models';
-import { throws } from 'assert';
+
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +19,7 @@ export class SucursalesService {
     return this.shttp.post(this.url + '/agregarSucursal', parametros, { headers: headersToken})
   }
 
-  obtenerSucursales(modeloSucursales: Sucursales, token): Observable<any> {
+  obtenerSucursales(token): Observable<any> {
     let headersToken = this.headersVariable.set('Authorization', token)
     return this.shttp.get(this.url + '/obtenerSucursales', {headers: headersToken})
   }

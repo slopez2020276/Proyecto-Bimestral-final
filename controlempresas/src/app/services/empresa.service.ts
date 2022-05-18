@@ -27,6 +27,12 @@ export class EmpresaService {
 
   /* PRODUCTOS */
 
+  obtenerEmpresas(token): Observable<any> {
+    let headersToken = this.headersVariable.set('Authorization', token )
+
+    return this.shttp.get(this.url + '/obtenerEmpresas', {headers: headersToken });
+  }
+
    agregarProductos(modeloProducto: Productos, token): Observable<any> {
      let parametros = JSON.stringify(modeloProducto);
      let headersToken = this.headersVariable.set('Authorization', token)

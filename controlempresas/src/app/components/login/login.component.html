@@ -5,17 +5,17 @@
         <h2>Bienvenido!</h2>
         <label>
           <span>Email</span>
-          <input type="email" class="form-control" name="email" #email="ngModel"
-          [(ngModel)]="UsuarioModelLogin.email">
+          <input type="email" id="form-email" class="form-control"  name="email" #email="ngModel" [(ngModel)]="usuarioModelLogin.email"
+                      placeholder="Ingrese su correo electronico" />
         </label>
         <label>
           <span>Password</span>
-          <input type="password" class="form-control" data-type="password"  name="password" #password="ngModel"
-          [ngModel]="UsuarioModelLogin.nombre"/>
+          <input type="password" id="form-password" class="form-control"  placeholder="Ingrese su contraseña" data-type="password" name="password" #password="ngModel"
+                    [(ngModel)]="usuarioModelLogin.password"/>
         </label>
         <p class="forgot-pass">Forgot password?</p>
         <button type="button" class="submit" (click)="login()">Sign Up</button>
-        <button type="button" class="fb-btn">Connect with <span>facebook</span></button>
+        <button type="button" class="fb-btn" onclick="redirectregistro()">Registrate c:</button>
       </div>
       <div class="sub-cont">
         <div class="img">
@@ -23,31 +23,6 @@
             <h2>Hola!</h2>
             <p>Eres nuevo acá? registrate para encontrar la solucion a tus problemas!!</p>
           </div>
-          <div class="img__text m--in">
-            <h2>One of us?</h2>
-            <p>If you already has an account, just sign in. We've missed you!</p>
-          </div>
-          <div class="img__btn">
-            <span class="m--up">Sign Up</span>
-            <span class="m--in">Sign In</span>
-          </div>
-        </div>
-        <div class="form sign-up">
-          <h2>Time to feel like home,</h2>
-          <label>
-            <span>Name</span>
-            <input type="text" />
-          </label>
-          <label>
-            <span>Email</span>
-            <input type="email" />
-          </label>
-          <label>
-            <span>Password</span>
-            <input type="password" />
-          </label>
-          <button type="submit" class="btn btn-primary" (click)="login()">Sign Up</button>
-          <button type="button" class="fb-btn">Join with <span>facebook</span></button>
         </div>
       </div>
     </div>

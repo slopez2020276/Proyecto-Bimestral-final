@@ -9,10 +9,10 @@ import { UsuarioService } from 'src/app/services/usuario.service';
   providers: [UsuarioService]
 })
 export class LoginComponent implements OnInit {
-  public UsuarioModelLogin: Usuario;
+  public usuarioModelLogin: Usuario;
 
   constructor(private susuarioService: UsuarioService) {
-    this.UsuarioModelLogin = new Usuario(
+    this.usuarioModelLogin = new Usuario(
       "",
       "",
       "",
@@ -25,24 +25,25 @@ export class LoginComponent implements OnInit {
   }
 
   getToken(){
-    this.susuarioService.login(this.UsuarioModelLogin, "true").subscribe(
+    this.susuarioService.login(this.usuarioModelLogin, "true").subscribe(
       (response)=>{
         console.log(response.token);
-        localStorage.setItem("token", response.token)
+        localStorage.setItem('token', response.token);
       },
       (error)=>{
-        console.log(<any>error);
-
+        console.log(<any> error);
       }
-    )
+    );
   }
 
   login(){
-    this.susuarioService.login(this.UsuarioModelLogin).subscribe(
+    this.susuarioService.login(this.usuarioModelLogin).subscribe(
       (response)=>{
         console.log(response.usuario);
-        localStorage.setItem('identidad', JSON.stringify(response.usuario));
+        localStorage.setItem('token', response.token)
+        localStorage.setItem('usuario', JSON.stringify(response.usuario));
         this.getToken();
+        
         
 
     },(error)=>{

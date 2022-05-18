@@ -14,6 +14,8 @@ import { JavierComponent } from './components/javier/javier.component';
 import { MarlonComponent } from './components/marlon/marlon.component';
 import { DanielComponent } from './components/daniel/daniel.component';
 import { SucursalesComponent } from './components/sucursales/sucursales.component';
+import { RegistroComponent } from './components/registro/registro.component';
+
 
 
 @NgModule({
@@ -27,7 +29,8 @@ import { SucursalesComponent } from './components/sucursales/sucursales.componen
     JavierComponent,
     MarlonComponent,
     DanielComponent,
-    SucursalesComponent
+    SucursalesComponent,
+    RegistroComponent
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,7 @@ import { CarlosComponent } from './components/carlos/carlos.component';
 import { EmpresaComponent } from './components/empresa/empresa.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { LoginComponent } from './components/login/login.component';
+import { RegistroComponent } from './components/registro/registro.component';
 import { SucursalesComponent } from './components/sucursales/sucursales.component';
 
 
@@ -14,7 +15,8 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'empresa', component: EmpresaComponent},
   {path: 'sucursales', component: SucursalesComponent},
-  {path: 'equipoUsiario1', component: CarlosComponent}
+  {path: 'equipoUsiario1', component: CarlosComponent},
+  {path: 'registro', component: RegistroComponent}
   
 ];
 
