@@ -5,8 +5,8 @@
         <h2>Bienvenido!</h2>
         <label>
           <span>Email</span>
-          <input type="email" id="form-email" class="form-control"  name="email" #email="ngModel" [(ngModel)]="usuarioModelLogin.email"
-                      placeholder="Ingrese su correo electronico" />
+          <input type="name" class="form-control"  name="name" #nombre="ngModel" [(ngModel)]="usuarioModelLogin.nombre"
+                      placeholder="Ingrese su nombre de usuario" />
         </label>
         <label>
           <span>Password</span>
@@ -14,8 +14,8 @@
                     [(ngModel)]="usuarioModelLogin.password"/>
         </label>
         <p class="forgot-pass">Forgot password?</p>
-        <button type="button" class="submit" (click)="login()">Sign Up</button>
-        <button type="button" class="fb-btn" onclick="redirectregistro()">Registrate c:</button>
+        <button type="button" class="submit" (click)="login()">Iniciar Sesión</button>
+        <button type="button" class="fb-btn" onclick="redirectregistro()">Registrarse</button>
       </div>
       <div class="sub-cont">
         <div class="img">

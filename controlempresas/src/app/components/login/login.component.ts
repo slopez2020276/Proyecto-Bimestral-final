@@ -11,7 +11,7 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 export class LoginComponent implements OnInit {
   public usuarioModelLogin: Usuario;
 
-  constructor(private susuarioService: UsuarioService) {
+  constructor(private usuarioService: UsuarioService) {
     this.usuarioModelLogin = new Usuario(
       "",
       "",
@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   }
 
   getToken(){
-    this.susuarioService.login(this.usuarioModelLogin, "true").subscribe(
+    this.usuarioService.login(this.usuarioModelLogin, "true").subscribe(
       (response)=>{
         console.log(response.token);
         localStorage.setItem('token', response.token);
@@ -37,15 +37,11 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-    this.susuarioService.login(this.usuarioModelLogin).subscribe(
+    this.usuarioService.login(this.usuarioModelLogin).subscribe(
       (response)=>{
         console.log(response.usuario);
-        localStorage.setItem('token', response.token)
-        localStorage.setItem('usuario', JSON.stringify(response.usuario));
+        localStorage.setItem('ideantidad', JSON.stringify(response.usuario));
         this.getToken();
-        
-        
-
     },(error)=>{
       console.log(<any> error);
     }
