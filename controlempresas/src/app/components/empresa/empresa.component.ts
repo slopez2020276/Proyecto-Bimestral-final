@@ -14,9 +14,9 @@ import { UsuarioService } from 'src/app/services/usuario.service';
   styleUrls: ['./empresa.component.scss'],
   providers: [EmpresaService]
 })
+
 export class EmpresaComponent implements OnInit {
 
-  //variables
   public empresasModelGet: Empresas;
   public empresasModelPost: Empresas;
   public token;
@@ -28,12 +28,13 @@ export class EmpresaComponent implements OnInit {
   public SucursalId: String;
 
   constructor( 
-    private sempresaService: EmpresaService,
-    private susuarioService: UsuarioService,
-    private ssucursalesService: SucursalesService,
-    private router: Router
+    private _empresaS: EmpresaService,
+    private _usuarioS: UsuarioService,
+    private _sucursaleS: SucursalesService,
+    private _router: Router
              ) {
               this.empresasModelPost = new Empresas(
+                '',
                 '',
                 '',
                 '',
@@ -43,9 +44,9 @@ export class EmpresaComponent implements OnInit {
                   precioProducto: 0,
                   stock: 0
                 }]
-          
               )
-              this.token = this.susuarioService.getToken();
+
+              this.token = this._usuarioS.getToken();
 
               this.productosModelPost = new Productos(
                 '',
@@ -68,10 +69,11 @@ export class EmpresaComponent implements OnInit {
             }
 
   ngOnInit(): void {
+    //this.getProductos();
   }
 
   getEmpresa() {
-    this.sempresaService.obtenerEmpresas(this.token).subscribe(
+    this._empresaS.obtenerEmpresas(this.token).subscribe(
       (response) => {
         this.empresasModelGet = response.empresa;
         console.log(response.empresasModelGet);
@@ -82,17 +84,18 @@ export class EmpresaComponent implements OnInit {
     )
   }
 
-  postEmpresa() {
-    this.sempresaService.agregarEmpresa(this.empresasModelPost, this.token).subscribe(
+postEmpresa() {
+    this._empresaS.agregarEmpresa(this.empresasModelPost, this._usuarioS.getToken).subscribe(
       (response) => {
         console.log(response);
         this.getEmpresa();
         this.empresasModelPost.nombre = "";
         this.empresasModelPost.direccion = "";
         this.empresasModelPost.descripcion = "";
+        this.empresasModelPost.password = "";
       },
       (err) => {
-        console.log(<any>err)
+        console.log(<any>err);
       }
     )
   }
@@ -100,7 +103,7 @@ export class EmpresaComponent implements OnInit {
   //productos
 
   getProductos() {
-    this.sempresaService.obtenerProductos(this.token).subscribe(
+    this._empresaS.obtenerProductos(this.token).subscribe(
       (response) => {
         console.log(response.productos);
         this.empresaProdModelGet = response.productos
@@ -112,7 +115,7 @@ export class EmpresaComponent implements OnInit {
   }
 
   postProductos() {
-    this.sempresaService.agregarProductos(this.productosModelPost, this.token).subscribe(
+    this._empresaS.agregarProductos(this.productosModelPost, this.token).subscribe(
       (response) => {
         console.log(response);
         this.getProductos();
@@ -126,8 +129,8 @@ export class EmpresaComponent implements OnInit {
     )
   }
 
-  putProductos() {
-    this.sempresaService.editarProducto(this.productosModelGetId, this.token).subscribe(
+putProductos() {
+    this._empresaS.editarProducto(this.productosModelGetId, this.token).subscribe(
       (response) => {
         console.log(response);
         this.getProductos();
@@ -138,7 +141,7 @@ export class EmpresaComponent implements OnInit {
   }
 
   deleteProducto(id) {
-    this.sempresaService.eliminarProducto(id, this.token).subscribe(
+    this._empresaS.eliminarProducto(id, this.token).subscribe(
       (response) => {
         console.log(response);
         this.getProductos();
@@ -147,7 +150,7 @@ export class EmpresaComponent implements OnInit {
   }
 
   getProductoId(idProducto){
-    this.sempresaService.obtenerProductosById(idProducto, this.token).subscribe(
+    this._empresaS.obtenerProductosById(idProducto, this.token).subscribe(
       (response)=>{
         console.log(response);
         this.productosModelGetId = response.productos;
@@ -159,7 +162,7 @@ export class EmpresaComponent implements OnInit {
   }
 
   postAgregarProd(idProducto){
-    this.sempresaService.obtenerProductosById(idProducto, this.token).subscribe(
+    this._empresaS.obtenerProductosById(idProducto, this.token).subscribe(
       (response) => {
         console.log(response);
         this.productosModelGetId = response.productos;
@@ -173,8 +176,8 @@ export class EmpresaComponent implements OnInit {
 
   }
 
-  getSucursales(){
-    this.ssucursalesService.obtenerSucursales(this.token).subscribe(
+getSucursales(){
+    this._sucursaleS.obtenerSucursales(this.token).subscribe(
       (response) => {
         this.sucursalModelGet = response.sucursales;
         console.log(response);
@@ -186,15 +189,15 @@ export class EmpresaComponent implements OnInit {
     )
   }
 
-  getIdSucursal(idSucursal, stock){
+getIdSucursal(idSucursal, stock){
     this.getIdSucursal = idSucursal
     console.log(this.getIdSucursal);
-  }
+}
 
-  agregarProd(){
+agregarProd(){
     console.log(this.getIdSucursal);
 
-    this.sempresaService.agregarProductoaSucursal(this.productosModelGetId, this.token, this.getIdSucursal, this.productosModelGetId._id).subscribe(
+    this._empresaS.agregarProductoaSucursal(this.productosModelGetId, this.token, this.getIdSucursal, this.productosModelGetId._id).subscribe(
 
       (response) => {
 
@@ -210,5 +213,5 @@ export class EmpresaComponent implements OnInit {
       }
 
     )
-}
+  }
 }

@@ -4,7 +4,7 @@
       <div class="form sign-in">
         <h2>Bienvenido!</h2>
         <label>
-          <span>Email</span>
+          <span>Usuario</span>
           <input type="name" class="form-control"  name="name" #nombre="ngModel" [(ngModel)]="usuarioModelLogin.nombre"
                       placeholder="Ingrese su nombre de usuario" />
         </label>
@@ -15,13 +15,13 @@
         </label>
         <p class="forgot-pass">Forgot password?</p>
         <button type="button" class="submit" (click)="login()">Iniciar Sesión</button>
-        <button type="button" class="fb-btn" onclick="redirectregistro()">Registrarse</button>
+        <button type="button" class="fb-btn" routerLink="/registro" routerLinkActive="active">Registrarse</button>
       </div>
       <div class="sub-cont">
         <div class="img">
           <div class="img__text m--up">
             <h2>Hola!</h2>
-            <p>Eres nuevo acá? registrate para encontrar la solucion a tus problemas!!</p>
+            <p>Quieres llevar un control sobre toda tu empresa? Registrate para saber mas</p>
           </div>
         </div>
       </div>

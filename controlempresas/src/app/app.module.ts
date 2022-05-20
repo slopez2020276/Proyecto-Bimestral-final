@@ -9,10 +9,6 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { LoginComponent } from './components/login/login.component';
 import { EmpresaComponent } from './components/empresa/empresa.component';
-import { CarlosComponent } from './components/carlos/carlos.component';
-import { JavierComponent } from './components/javier/javier.component';
-import { MarlonComponent } from './components/marlon/marlon.component';
-import { DanielComponent } from './components/daniel/daniel.component';
 import { SucursalesComponent } from './components/sucursales/sucursales.component';
 import { RegistroComponent } from './components/registro/registro.component';
 
@@ -25,10 +21,6 @@ import { RegistroComponent } from './components/registro/registro.component';
     InicioComponent,
     LoginComponent,
     EmpresaComponent,
-    CarlosComponent,
-    JavierComponent,
-    MarlonComponent,
-    DanielComponent,
     SucursalesComponent,
     RegistroComponent
   ],

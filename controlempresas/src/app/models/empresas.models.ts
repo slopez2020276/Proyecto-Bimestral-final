@@ -4,6 +4,7 @@ export class Empresas{
     public nombre: String,
     public direccion: String,
     public descripcion: String,
+    public password: String,
     public productos: [{
       nombreProducto: String,
       precioProducto: Number,
