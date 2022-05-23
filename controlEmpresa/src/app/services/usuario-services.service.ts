@@ -2,12 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
+
+
 @Injectable({
   providedIn: 'root'
 })
 export class UsuarioServicesService {
   // varibles
-  public uri: string = 'http://localhost:3200/api/';
+  public uri: string = 'http://localhost:3000/api/';
   public user:any;
   public token:any;
   public role:any;
@@ -46,11 +48,8 @@ export class UsuarioServicesService {
     return token;
   }
 
-  login(user: any){
-    user.gettoken = "true";
-    let params = JSON.stringify(user);
-    return this.http.post<any>(`${this.uri}login`, params, this.httpOptions).pipe(map(this.extractData))
-  }
+
+
 
   crearEmpresa(user: any){
     let headers = new HttpHeaders({
