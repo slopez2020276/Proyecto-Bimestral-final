@@ -1,0 +1,152 @@
+<body>
+
+<div class="h1ybutton">
+
+  <h1>Sucursales</h1>
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregarEmpresaModal">
+    Agregar Sucursal
+  </button>
+</div>
+<div class="container">
+<div class="row ">
+<div class="col-12 col-md-4" *ngFor="let emp of empresasModelGet">
+
+  <div class="card">
+
+      <div class="card-body">
+        <h5 class="card-title">{{ emp.nombreSucursal }}</h5>
+        <p class="card-text">
+          Direccion: {{ emp.direccionSucursal }}.
+          Numero {{ emp.numero }}
+        </p>
+
+          <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+          <button type="button" class="btn btn-danger" (click)="deleteSucursal(emp._id)">Eliminar</button>
+          <button type="button" class="btn btn-warning" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
+            aria-controls="offcanvasExample" (click)="getSucursalesId(emp._id)">
+            Editar
+          </button>
+          <button type="button" class="btn btn-success" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample2"
+            aria-controls="offcanvasExample2" (click)="getSucursalesId(emp._id)">
+            Agregar Producto
+          </button>
+          <button type="button" class="btn btn-info" ><a class="nav-link" routerLink="/prods" routerLinkActive="active">Ir a Productos</a>
+
+        </button>
+          </div>
+
+      </div>
+    </div>
+
+
+</div>
+
+</div>
+
+</div>
+
+ <!--  Modal Agregar Empresas -->
+  <div class="cajaa">
+    <div class="modal fade" id="agregarEmpresaModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+
+      <div class="modal-dialog">
+
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Agregar Sucursal</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body">
+
+            <form>
+
+              <div class="mg-3">
+                <label for="imputNombre" class="form-label"> Precio </label>
+                <input type="text" id="imputNombre" class="form-control" name="nombre" #nombre="ngModel"
+                  [(ngModel)]="empresasModelPost.nombreSucursal">
+              </div>
+              <div class="mg-3">
+                <label for="imputNombre" class="form-label"> Stock </label>
+                <input type="text" id="imputNombre" class="form-control" name="nombre" #username="ngModel"
+                  [(ngModel)]="empresasModelPost.direccionSucursal">
+              </div>
+              <div class="mg-3">
+                <label for="imputDireccion" class="form-label"> Vendidas </label>
+                <input type="text" id="imputDireccion" class="form-control" name="direccion" #direccion="ngModel"
+                  [(ngModel)]="empresasModelPost.numero">
+
+
+
+              </div>
+
+            </form>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-primary" (click)="postEmpresa()">Agregar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar Sucursal</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <form>
+        <div class="mb-3">
+          <label for="imputNombre" class="form-label"> Nombre Sucursal </label>
+          <input type="text" class="form-control" id="imputNombre" name="nombre" #nombre="ngModel"
+          [(ngModel)]="empresasModelGetId.nombreSucursal">
+        </div>
+        <div class="mg-3">
+          <label for="imputNombre" class="form-label"> Direccion </label>
+          <input type="text" id="imputNombre" class="form-control" name="username" #username="ngModel"
+            [(ngModel)]="empresasModelGetId.direccionSucursal">
+        </div>
+        <div class="mb-3">
+          <label for="inputCantidad" class="form-label"> numero </label>
+          <input type="text" class="form-control" id="inputCantidad" name="direccion" #direccion="ngModel"
+          [(ngModel)]="empresasModelGetId.numero">
+        </div>
+        <button type="button" class="btn btn-success" (click)="putEmpresa()" data-bs-dismiss="offcanvas">Editar Producto</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample2" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Agregar Producto</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <form>
+        <div class="mb-3">
+          <label for="imputNombre" class="form-label"> Nombre </label>
+          <input type="text" class="form-control" id="imputNombre" name="nombre" #nombre="ngModel"
+          [(ngModel)]="productosSucModel.nombre">
+        </div>
+        <div class="mg-3">
+          <label for="imputPrecioUnitario" class="form-label"> Precio Unitario </label>
+          <input type="text" id="imputPrecioUnitario" class="form-control" name="precioUnitario" #precioUnitario="ngModel"
+            [(ngModel)]="productosSucModel.precioUnitario">
+        </div>
+        <div class="mb-3">
+          <label for="inputstock" class="form-label"> Stock </label>
+          <input type="text" class="form-control" id="inputstock" name="stock" #stock="ngModel"
+          [(ngModel)]="productosSucModel.stock">
+        </div>
+        <button type="button" class="btn btn-success" (click)="putPSucursal()" data-bs-dismiss="offcanvas">Guardar Producto</button>
+      </form>
+    </div>
+  </div>
+
+
+</body>

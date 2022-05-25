@@ -1,0 +1,141 @@
+<body>
+
+  <div class="h1ybutton">
+    <h1>Empresas</h1>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregarEmpresaModal">
+      Agregar Empresas
+    </button>
+  </div>
+<div class="container">
+  <div class="row ">
+  <div class="col-12 col-md-4" *ngFor="let emp of empresasModelGet">
+
+    <div class="card">
+
+        <div class="card-body">
+          <h5 class="card-title">{{ emp.username }}</h5>
+          <p class="card-text ">
+            <p> Direccion: {{ emp.direccion }}</p>
+            <p>
+            Descripcion {{ emp.descripcion }}
+          </p>
+          <div class="grupo">
+            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+            <button type="button" class="btn btn-danger" (click)="deleteEmpresa(emp._id)">Eliminar</button>
+            <button type="button" class="btn btn-warning" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
+              aria-controls="offcanvasExample" (click)="getEmpresasId(emp._id)">
+              Editar
+            </button>
+          </div>
+            </div>
+        </div>
+      </div>
+
+
+  </div>
+
+  </div>
+
+</div>
+
+   <!--  card nueva -->
+
+   <!--  card nueva -->
+   <!--  Modal Agregar Empresas -->
+    <div class="cajaa">
+      <div class="modal fade" id="agregarEmpresaModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+
+        <div class="modal-dialog">
+
+          <div class="modal-content">
+
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Agregar Empresa</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+
+              <form>
+
+                <div class="mg-3">
+                  <label for="imputNombre" class="form-label"> Nombre </label>
+                  <input type="text" id="imputNombre" class="form-control" name="nombre" #nombre="ngModel"
+                    [(ngModel)]="empresasModelPost.nombre">
+                </div>
+                <div class="mg-3">
+                  <label for="imputNombre" class="form-label"> Username </label>
+                  <input type="text" id="imputNombre" class="form-control" name="nombre" #username="ngModel"
+                    [(ngModel)]="empresasModelPost.username">
+                </div>
+                <div class="mg-3">
+                  <label for="imputDireccion" class="form-label"> Direccion </label>
+                  <input type="text" id="imputDireccion" class="form-control" name="direccion" #direccion="ngModel"
+                    [(ngModel)]="empresasModelPost.direccion">
+                </div>
+                <div class="mg-3">
+                  <label for="imputNombre" class="form-label"> Numero Telefonico </label>
+                  <input type="tel" id="imputNumero" class="form-control" name="numero" #numero="ngModel"
+                    [(ngModel)]="empresasModelPost.numero">
+                </div>
+                <div class="mg-3">
+                  <label for="imputDescripcion" class="form-label">Pequeña descripcion</label>
+                  <input type="text" id="imputDescripcion" class="form-control" name="descripcion"
+                    #descripcion="ngModel" [(ngModel)]="empresasModelPost.descripcion">
+                </div>
+                <div class="mg-3">
+                  <label for="imputDescripcion" class="form-label"> Contraseña </label>
+                  <input type="text" id="imputDescripcion" class="form-control" name="password"
+                    #password="ngModel" [(ngModel)]="empresasModelPost.password">
+                </div>
+
+              </form>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+              <button type="button" class="btn btn-primary" (click)="postEmpresa()">Agregar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar Empresa</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <form>
+          <div class="mb-3">
+            <label for="imputNombre" class="form-label"> Nombre </label>
+            <input type="text" class="form-control" id="imputNombre" name="nombre" #nombre="ngModel"
+            [(ngModel)]="empresasModelGetId.nombre">
+          </div>
+          <div class="mg-3">
+            <label for="imputNombre" class="form-label"> Username </label>
+            <input type="text" id="imputNombre" class="form-control" name="username" #username="ngModel"
+              [(ngModel)]="empresasModelGetId.username">
+          </div>
+          <div class="mb-3">
+            <label for="inputCantidad" class="form-label"> Direccion </label>
+            <input type="text" class="form-control" id="inputCantidad" name="direccion" #direccion="ngModel"
+            [(ngModel)]="empresasModelGetId.direccion">
+          </div>
+          <div class="mb-3">
+            <label for="inputNumero" class="form-label">Numero Telefonico</label>
+            <input type="tel" class="form-control" id="inputPrecio" name="numero" #numero="ngModel"
+            [(ngModel)]="empresasModelGetId.numero">
+          </div>
+          <div class="mb-3">
+            <label for="inputPrecio" class="form-label"> Descripcion </label>
+            <input type="text" class="form-control" id="inputPrecio" name="descripcion" #descripcion="ngModel"
+            [(ngModel)]="empresasModelGetId.descripcion">
+          </div>
+          <button type="button" class="btn btn-success" (click)="putEmpresa()" data-bs-dismiss="offcanvas">Editar Producto</button>
+        </form>
+      </div>
+    </div>
+</body>

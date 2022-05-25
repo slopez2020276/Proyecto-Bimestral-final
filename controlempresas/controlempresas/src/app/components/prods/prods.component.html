@@ -1,0 +1,175 @@
+<body>
+ <!--
+
+    <div class="h1ybutton">
+    <h1>Producto de Sucursales</h1>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregarEmpresaModal">
+      Agregar Empresas
+    </button>
+
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregarEmpresaModal">
+        Venta
+      </button>
+  </div>
+<div class="container">
+  <div class="row ">
+  <div class="col-12 col-md-4" *ngFor="let emp of prodSModelGet">
+
+    <div class="card">
+
+        <div class="card-body">
+          <h5 class="card-title">{{ emp.nombre }}</h5>
+          <p class="card-text">
+            PrecioUnitario: {{ emp.precioUnitario }}
+            stock: {{ emp.stock }}
+          </p>
+          <a class="btn btn-primary">
+            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+            <button type="button" class="btn btn-danger" (click)="deleteProductosS(emp._id)">Eliminar</button>
+            <button type="button" class="btn btn-warning" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
+              aria-controls="offcanvasExample" (click)="getProductosSId(emp._id)">
+              Editar
+            </button>
+            </div>
+          </a>
+        </div>
+      </div>
+
+
+  </div>
+
+  </div>
+
+</div>
+
+    Modal Agregar Empresas
+    <div class="cajaa">
+      <div class="modal fade" id="agregarEmpresaModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+
+        <div class="modal-dialog">
+
+          <div class="modal-content">
+
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Agregar Producto Sucursales</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+
+              <form>
+                <div class="mg-3">
+                  <label for="imputNombre" class="form-label"> Nombre </label>
+                  <input type="text" id="imputNombre" class="form-control" name="nombre" #nombre="ngModel"
+                    [(ngModel)]="prodSModelPost.nombre">
+                </div>
+                <div class="mg-3">
+                  <label for="imputPrecioUnitario" class="form-label"> Precio Unitario </label>
+                  <input type="number" id="imputPrecioUnitario" class="form-control" name="precioUnitario" #precioUnitario="ngModel"
+                    [(ngModel)]="prodSModelPost.precioUnitario">
+                </div>
+                <div class="mg-3">
+                  <label for="imputStock" class="form-label"> Stock </label>
+                  <input type="number" id="imputStock" class="form-control" name="stock" #stock ="ngModel"
+                    [(ngModel)]="prodSModelPost.stock">
+                </div>
+              </form>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+              <button type="button" class="btn btn-primary" (click)="putPSucursal()">Agregar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar Producto</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+
+        <form>
+            <div class="mg-3">
+              <label for="imputNombre" class="form-label"> Nombre </label>
+              <input type="text" id="imputNombre" class="form-control" name="nombre" #nombre="ngModel"
+                [(ngModel)]="prodSModelGetId.nombre">
+            </div>
+            <div class="mg-3">
+                <label for="imputPrecioUnitario" class="form-label"> Precio Unitario </label>
+                <input type="number" id="imputPrecioUnitario" class="form-control" name="precioUnitario" #precioUnitario="ngModel"
+                  [(ngModel)]="prodSModelGetId.precioUnitario">
+              </div>
+            <div class="mg-3">
+              <label for="imputStock" class="form-label"> Stock </label>
+              <input type="number" id="imputStock" class="form-control" name="stock" #stock ="ngModel"
+                [(ngModel)]="prodSModelGetId.stock">
+            </div>
+
+          <button type="button" class="btn btn-success" (click)="putProductosS()" data-bs-dismiss="offcanvas">Editar Producto</button>
+        </form>
+      </div>
+    </div>
+
+
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar Producto</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+
+        <form>
+            <div class="mg-3">
+              <label for="imputNombre" class="form-label"> Nombre </label>
+              <input type="text" id="imputNombre" class="form-control" name="nombre" #nombre="ngModel"
+                [(ngModel)]="prodSModelGetId.nombre">
+            </div>
+            <div class="mg-3">
+              <label for="imputStock" class="form-label"> Cantidad A Enviar </label>
+              <input type="number" id="imputStock" class="form-control" name="stock" #stock ="ngModel"
+                [(ngModel)]="prodSModelGetId.stock">
+            </div>
+
+          <button type="button" class="btn btn-success" (click)="ventas()" data-bs-dismiss="offcanvas">Generar Venta</button>
+        </form>
+      </div>
+    </div>
+</body>
+-->
+
+<div class="h1ybutton">
+  <h1>Producto de Sucursales</h1>
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregarEmpresaModal">
+    Agregar Producto
+  </button>
+  <p></p>
+</div>
+<div class="container">
+<div class="row ">
+<div class="col-12 col-md-4">
+<p></p>
+  <div class="card">
+
+      <div class="card-body">
+        <h5 class="card-title">Hamburguesa con Queso</h5>
+        <p class="card-text"> Precio: Q200 <p> Stock: 500 </p>
+        <p> Vendidas: 0 </p>
+
+          <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+          <button type="button" class="btn btn-danger">Eliminar</button>
+          <button type="button" class="btn btn-warning">Editar</button>
+          </div>
+      </div>
+    </div>
+
+
+</div>
+
+</div>
+
+</div>
